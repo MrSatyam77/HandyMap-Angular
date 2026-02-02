@@ -1,0 +1,35 @@
+<div class="app-container">
+  <header class="app-header">
+    <div class="header-content">
+      <a class="logo" href="/home">
+        <span class="logo-icon">🗺️</span>
+        <span class="logo-text">HandyMap</span>
+      </a>
+      <nav class="main-nav desktop-nav">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">
+          <span class="nav-link-icon">🏠</span>
+          <span>Home</span>
+        </a>
+        <a routerLink="/booking" routerLinkActive="active" class="nav-link">
+          <span class="nav-link-icon">📍</span>
+          <span>Book Expert</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="app-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <nav class="bottom-nav mobile-nav">
+    <a routerLink="/home" routerLinkActive="active" class="nav-item">
+      <span class="nav-icon">🏠</span>
+      <span class="nav-label">Home</span>
+    </a>
+    <a routerLink="/booking" routerLinkActive="active" class="nav-item">
+      <span class="nav-icon">📍</span>
+      <span class="nav-label">Book</span>
+    </a>
+  </nav>
+</div>

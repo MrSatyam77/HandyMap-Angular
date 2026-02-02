@@ -1,0 +1,86 @@
+<div class="tracking-container">
+    <div class="map-section">
+        <div id="trackingMap" class="map-canvas"></div>
+    </div>
+
+    <div class="info-sidebar">
+        @switch (expertStatus().status) {
+        @case ('searching') {
+        <div class="status-panel">
+            <div class="status-header">
+                <div class="status-indicator searching"></div>
+                <h2>Finding Expert</h2>
+            </div>
+            <p class="status-message">Searching for available experts nearby...</p>
+            <div class="loading-dots">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        }
+        @case ('expert_assigned') {
+        <div class="status-panel">
+            <div class="status-header success">
+                <div class="check-icon">✓</div>
+                <h2>Expert Assigned</h2>
+            </div>
+            
+            <div class="expert-card">
+                <div class="expert-avatar">👤</div>
+                <div class="expert-info">
+                    <h3>{{ expertStatus().expertName }}</h3>
+                    <div class="expert-meta">
+                        <span>⭐ {{ expertStatus().rating }}</span>
+                        <span class="divider">|</span>
+                        <span>{{ expertStatus().vehicleNumber }}</span>
+                    </div>
+                    <div class="expert-phone">📞 {{ expertStatus().expertPhone }}</div>
+                </div>
+                <a href="tel:{{ expertStatus().expertPhone }}" class="call-btn" title="Call Expert">
+                    📞
+                </a>
+            </div>
+
+            <div class="eta-card">
+                <div class="eta-content">
+                    <span class="eta-label">Arriving in</span>
+                    <span class="eta-time">{{ expertStatus().eta }} min</span>
+                </div>
+            </div>
+        </div>
+        }
+        @case ('arriving') {
+        <div class="status-panel">
+            <div class="status-header arriving">
+                <div class="status-indicator arriving"></div>
+                <h2>Expert Arriving</h2>
+            </div>
+            <p class="status-message">{{ expertStatus().expertName }} is on the way</p>
+            <div class="eta-large">{{ expertStatus().eta }}<span>min</span></div>
+        </div>
+        }
+        @case ('completed') {
+        <div class="status-panel">
+            <div class="status-header completed">
+                <div class="check-icon">🎉</div>
+                <h2>Service Completed</h2>
+            </div>
+            
+            <div class="fare-card">
+                <div class="fare-label">Total Fare</div>
+                <div class="fare-amount">₹{{ totalFare }}</div>
+            </div>
+
+            <button class="action-btn primary" (click)="goHome()">
+                🏠 Back to Home
+            </button>
+        </div>
+        }
+        }
+
+        @if (expertStatus().status !== 'completed' && expertStatus().status !== 'searching') {
+        <button class="action-btn secondary" (click)="cancelExpert()">
+            Cancel Booking
+        </button>
+        }
+    </div>
+</div>

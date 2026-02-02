@@ -1,0 +1,40 @@
+{
+  "name": "ride-hailing-app",
+  "version": "1.0.0",
+  "description": "Real-time ride-hailing application with Angular 20",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "server": "node server/mock-server.js"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.3.16",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/platform-browser-dynamic": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "leaflet": "^1.9.4",
+    "rxjs": "^7.8.1",
+    "socket.io-client": "^4.7.2",
+    "tslib": "^2.7.0",
+    "zone.js": "^0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@types/leaflet": "^1.9.8",
+    "@types/node": "^22.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "socket.io": "^4.7.2",
+    "typescript": "~5.8.0"
+  }
+}

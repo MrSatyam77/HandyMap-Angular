@@ -1,0 +1,69 @@
+<div class="home-container">
+    <section class="search-section">
+        <div class="search-wrapper">
+            <h1 class="main-heading">Home services, on demand.</h1>
+            <div class="search-bar">
+                <select class="service-select" [(ngModel)]="selectedExpert" (change)="onExpertSelect()">
+                    <option value="" disabled selected>Search for services</option>
+                    <option value="plumber">Plumber</option>
+                    <option value="electrician">Electrician</option>
+                    <option value="carpenter">Carpenter</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <section class="promotional-banners">
+        <div class="banner-row">
+            <div class="banner-card small" (click)="selectExpert('plumber')">
+                <div class="banner-content">
+                    <h3>Professional Plumbing</h3>
+                    <p>Fix leaks & installations</p>
+                    <button class="banner-btn">Book now</button>
+                </div>
+                <div class="banner-image plumber-img">🔧</div>
+            </div>
+            <div class="banner-card small" (click)="selectExpert('electrician')">
+                <div class="banner-content">
+                    <h3>Expert Electricians</h3>
+                    <p>Wiring & electrical work</p>
+                    <button class="banner-btn">Book now</button>
+                </div>
+                <div class="banner-image electrician-img">⚡</div>
+            </div>
+        </div>
+
+        <div class="banner-card large" (click)="selectExpert('carpenter')">
+            <div class="large-banner-content">
+                <h2>Premium Carpentry Services</h2>
+                <p>Expert woodwork and furniture repair</p>
+                <button class="banner-btn-large">Book now</button>
+            </div>
+            <div class="large-banner-image">🪚</div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="feature-card">
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">✓</span>
+            </div>
+            <h4>Verified Experts</h4>
+            <p>Background checked professionals</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">⚡</span>
+            </div>
+            <h4>Quick Response</h4>
+            <p>Fast booking & service</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon-wrapper">
+                <span class="feature-icon">💯</span>
+            </div>
+            <h4>Best Rates</h4>
+            <p>Transparent pricing</p>
+        </div>
+    </section>
+</div>

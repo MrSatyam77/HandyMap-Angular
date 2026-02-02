@@ -1,0 +1,78 @@
+<div class="booking-container">
+    <div class="map-section">
+        <div id="bookingMap" class="map-canvas"></div>
+
+        <button class="back-button" (click)="goBack()">
+            ← Back
+        </button>
+
+        @if (expertType()) {
+        <div class="expert-type-banner">
+            <span class="expert-icon">
+                @if (expertType() === 'plumber') { 🔧 }
+                @else if (expertType() === 'electrician') { ⚡ }
+                @else if (expertType() === 'carpenter') { 🪚 }
+            </span>
+            <span class="expert-label">{{ expertType() | titlecase }}</span>
+        </div>
+        }
+
+        <div class="location-inputs">
+            <div class="input-wrapper">
+                <div class="input-group">
+                    <span class="input-icon pickup">📍</span>
+                    <input type="text" [(ngModel)]="pickupAddress" placeholder="Enter your location"
+                        (focus)="onPickupFocus()" (input)="onSearchInput()" class="location-input">
+                    <button class="current-location-btn" (click)="useCurrentLocation()" title="Use current location">
+                        <span>🎯</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        @if (showSearchResults() && searchResults().length > 0) {
+        <div class="search-results">
+            <div class="results-header">Search Results</div>
+            @for (result of searchResults(); track result.place_id) {
+            <div class="result-item" (click)="selectSearchResult(result)">
+                <div class="result-icon">📍</div>
+                <div class="result-info">
+                    <div class="result-name">{{ result.display_name.split(',')[0] }}</div>
+                    <div class="result-address">{{ result.display_name }}</div>
+                </div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+
+    @if (showVehicleSelection()) {
+    <div class="booking-sidebar">
+        <div class="sidebar-header">
+            <h2>Your Booking</h2>
+            <button class="close-btn" (click)="showVehicleSelection.set(false)">✕</button>
+        </div>
+
+        <div class="fare-card">
+            <div class="fare-row">
+                <span class="fare-label">Service Fee</span>
+                <span class="fare-value">₹{{ fareEstimate()?.basefare || 0 }}</span>
+            </div>
+            <div class="fare-divider"></div>
+            <div class="fare-row total">
+                <span class="fare-label">Total Fare</span>
+                <span class="fare-value">₹{{ fareEstimate()?.total || 0 }}</span>
+            </div>
+        </div>
+
+        <button class="confirm-btn" (click)="confirmBooking()" [disabled]="bookingInProgress()">
+            @if (bookingInProgress()) {
+            <span class="spinner"></span>
+            <span>Booking...</span>
+            } @else {
+            <span>Book Expert</span>
+            }
+        </button>
+    </div>
+    }
+</div>
